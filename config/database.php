@@ -1,10 +1,9 @@
 <?php
 
-$host = "localhost";
+$host = "database";
 $username = "root";
-$password = "";
+$password = "root";
 $database = "smart_online_shop";
-
 
 $conn = mysqli_connect(
     $host,
@@ -13,11 +12,8 @@ $conn = mysqli_connect(
     $database
 );
 
-
 if (!$conn) {
-
     die("Database connection failed: " . mysqli_connect_error());
-
 }
 
 ?>
