@@ -78,6 +78,23 @@ The project can be deployed using PHP hosting platforms such as:
 - Render
 - Railway
 - Hostinger
+- Docker
+  ## Containerization:
+- Docker Compose
+
+## Docker Installation
+
+Build image:
+
+docker build -t smart-online-shopping .
+
+Run container:
+
+docker compose up
+
+Open:
+
+http://localhost:8080
 
 
 
