@@ -1,10 +1,10 @@
 <?php
 
-$host = getenv("DB_HOST") ?: "localhost";
-$username = getenv("DB_USER") ?: "root";
-$password = getenv("DB_PASSWORD") ?: "root";
-$database = getenv("DB_NAME") ?: "smart_online_shop";
-$port = getenv("DB_PORT") ?: 3306;
+$host = getenv("DB_HOST");
+$username = getenv("DB_USER");
+$password = getenv("DB_PASSWORD");
+$database = getenv("DB_NAME");
+$port = getenv("DB_PORT");
 
 
 $conn = mysqli_connect(
