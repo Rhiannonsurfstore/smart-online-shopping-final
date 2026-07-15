@@ -1,38 +1,25 @@
 <?php
 
-// Database configuration
-// Works for both local XAMPP and Render deployment
-
 $host = getenv("DB_HOST") ?: "localhost";
 $username = getenv("DB_USER") ?: "root";
-$password = getenv("DB_PASSWORD") ?: "";
+$password = getenv("DB_PASSWORD") ?: "root";
 $database = getenv("DB_NAME") ?: "smart_online_shop";
+$port = getenv("DB_PORT") ?: 3306;
 
-
-
-// Create database connection
 
 $conn = mysqli_connect(
     $host,
     $username,
     $password,
-    $database
+    $database,
+    $port
 );
 
-
-
-// Check connection
 
 if (!$conn) {
 
     die("Database connection failed: " . mysqli_connect_error());
 
 }
-
-
-// Set character encoding
-
-mysqli_set_charset($conn, "utf8mb4");
-
 
 ?>
