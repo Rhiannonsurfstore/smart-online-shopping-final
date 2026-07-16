@@ -1,151 +1,196 @@
 # Smart Online Shopping System
 
-![Smart Online Shopping](https://img.shields.io/badge/Project-E--Commerce-blue)
+![Project](https://img.shields.io/badge/Project-E--Commerce-blue)
 ![PHP](https://img.shields.io/badge/Backend-PHP%208.2-purple)
 ![Docker](https://img.shields.io/badge/Container-Docker-blue)
 ![Database](https://img.shields.io/badge/Database-TiDB%20Cloud-orange)
+![CI/CD](https://img.shields.io/badge/CI/CD-GitHub%20Actions-green)
 
-## Live Demo
+---
 
-🌐 Application URL:
+# Live Application
+
+🌐 **Website URL**
 
 https://smart-online-shopping-final.onrender.com
 
+---
 
-## Project Description
+# Project Overview
 
-Smart Online Shopping System is a web-based e-commerce application developed to provide customers with an easy and secure way to browse products, manage shopping carts, place orders, and track purchases online.
+Smart Online Shopping System is a full-stack e-commerce web application developed to provide customers with a simple, secure, and convenient way to purchase products online.
 
-The system provides two main users:
+The system allows customers to register, login, browse products, search products, add items to a shopping cart, complete checkout, and manage their orders.
 
-- Customers who can register, login, browse products, add products to cart, place orders, and review products.
-- Administrators who can manage products, categories, users, and orders through an admin dashboard.
+The project demonstrates practical implementation of:
 
-The project demonstrates the development, containerization, database management, and cloud deployment of a complete e-commerce web application.
-
+* Web application development
+* Database management
+* Cloud deployment
+* Docker containerization
+* Continuous Integration using GitHub Actions
 
 ---
 
 # Project Objectives
 
-The main objectives of this project are:
+The objectives of this project are:
 
-- To develop an online shopping platform for customers.
-- To provide efficient product management.
-- To simplify online ordering processes.
-- To store and manage customer and product information securely.
-- To deploy a PHP web application using modern cloud technologies.
-
+* To develop an online shopping platform.
+* To provide customers with easy access to products.
+* To implement user authentication.
+* To manage products and orders efficiently.
+* To store information using a relational database.
+* To deploy the application on a cloud platform.
+* To apply DevOps practices using Docker and CI/CD.
 
 ---
 
-# Main Features
+# System Features
 
 ## Customer Features
 
-- User registration
-- User authentication and login
-- Product browsing
-- Product categories
-- Product details viewing
-- Product search
-- Add products to shopping cart
-- Checkout process
-- Order placement
-- View order history
-- Submit product reviews
+Customers can:
 
+* Create an account
+* Login and logout
+* Browse products
+* Search products
+* Filter products by category
+* View product details
+* Add products to cart
+* Update cart items
+* Checkout orders
+* View order history
+* Submit product reviews
 
 ## Administrator Features
 
-- Admin login
-- Admin dashboard
-- Manage products
-- Add, update, and delete products
-- Manage product categories
-- View customer orders
-- Update order status
-- Manage customer information
+Administrators can:
 
+* Login to admin dashboard
+* Manage products
+* Add products
+* Update products
+* Delete products
+* Manage categories
+* View customer orders
+* Update order status
 
 ---
 
-# System Technologies
+# Technologies Used
 
 ## Frontend
 
-- HTML5
-- CSS3
-- Bootstrap 5
-- JavaScript
-
+* HTML5
+* CSS3
+* Bootstrap 5
+* JavaScript
 
 ## Backend
 
-- PHP 8.2
-
+* PHP 8.2
 
 ## Database
 
-Development Database:
-- MySQL / MariaDB (XAMPP)
+Development:
 
-Production Database:
-- TiDB Cloud (MySQL compatible)
+* MySQL / MariaDB using XAMPP
 
+Production:
 
-## Web Server
+* TiDB Cloud (MySQL compatible)
 
-- Apache
+## Server
 
+* Apache
 
-## Containerization
+## Deployment
 
-- Docker
-- Docker Compose
+* Render Cloud Platform
 
+## DevOps Tools
 
-## Cloud Deployment
+* Git
+* GitHub
+* GitHub Actions
+* Docker
+* Docker Compose
 
-Application Hosting:
+---
 
-- Render Web Service
+# System Architecture
 
+The application follows a three-layer architecture:
 
-Database Hosting:
+```
+User Browser
+      |
+      |
+Frontend Interface
+      |
+      |
+PHP Backend
+      |
+      |
+Database Server
+```
 
-- TiDB Cloud
+Deployment architecture:
 
+```
+Developer
+    |
+    |
+GitHub Repository
+    |
+    |
+GitHub Actions CI
+    |
+    |
+Render Deployment
+    |
+    |
+Live Website
+```
+
+Docker architecture:
+
+```
+PHP Apache Container
+          |
+          |
+MySQL Database Container
+```
 
 ---
 
 # Database Design
 
-The system uses a relational database called:
+Database Name:
 
 ```
 smart_online_shop
 ```
 
-Main database tables:
+Main tables:
 
-| Table | Description |
-|---|---|
-| users | Stores customer and admin information |
-| categories | Stores product categories |
-| products | Stores available products |
-| orders | Stores customer orders |
-| order_items | Stores products inside orders |
-| reviews | Stores customer product reviews |
-
+| Table       | Description                                   |
+| ----------- | --------------------------------------------- |
+| users       | Stores customer and administrator information |
+| categories  | Stores product categories                     |
+| products    | Stores available products                     |
+| orders      | Stores customer orders                        |
+| order_items | Stores products inside orders                 |
+| reviews     | Stores customer reviews                       |
 
 Database relationships:
 
-- One category can contain many products.
-- One user can create many orders.
-- One order can contain many products.
-- Users can submit reviews for products.
-
+* One category contains many products.
+* One user can create many orders.
+* One order contains many order items.
+* Users can review products.
 
 ---
 
@@ -155,81 +200,126 @@ Database relationships:
 smart-online-shopping/
 
 │
-├── admin/
-│   └── Admin dashboard files
+├── assets/
+│   └── images/
 │
 ├── config/
 │   └── database.php
 │
-├── css/
-│   └── Style files
+├── includes/
+│   ├── header.php
+│   ├── Navbar.php
+│   └── footer.php
 │
-├── images/
-│   └── Product images
-│
-├── js/
-│   └── JavaScript files
-│
-├── uploads/
+├── admin/
 │
 ├── index.php
 ├── login.php
 ├── register.php
+├── products.php
+├── product_details.php
 ├── cart.php
 ├── checkout.php
-├── products.php
+│
 ├── Dockerfile
 ├── docker-compose.yml
-└── README.md
+├── README.md
+└── PROJECT_REPORT.md
 ```
-
 
 ---
 
-# Local Installation Guide
+# Application Screenshots
+
+## Homepage
+
+The homepage contains:
+
+* Website banner
+* Product categories
+* Featured products
+
+![Homepage](screenshots/homepage.png)
+
+## Products Page
+
+Features:
+
+* Product browsing
+* Product search
+* Category filtering
+
+![Products](screenshots/products.png)
+
+## Product Details
+
+Displays:
+
+* Product information
+* Price
+* Description
+* Add to cart option
+
+![Product Details](screenshots/product-details.png)
+
+## Shopping Cart
+
+Customers can:
+
+* View selected products
+* Manage cart items
+* View total price
+
+![Cart](screenshots/cart.png)
+
+## Checkout
+
+Customers can complete orders.
+
+![Checkout](screenshots/checkout.png)
+
+## Login System
+
+The system provides:
+
+* Registration
+* Authentication
+* Secure login
+
+![Login](screenshots/login.png)
+
+---
+
+# Local Installation
 
 ## Requirements
 
 Install:
 
-- XAMPP
-- PHP 8.2+
-- MySQL
-- Web Browser
-
+* XAMPP
+* PHP 8.2+
+* MySQL
+* Web Browser
 
 ## Steps
 
-### 1. Clone Repository
+Clone repository:
 
 ```bash
 git clone https://github.com/Rhiannonsurfstore/smart-online-shopping-final.git
 ```
 
-
-### 2. Move Project
-
-Copy project into:
+Move project into:
 
 ```
 C:\xampp\htdocs\
 ```
 
-
-### 3. Start XAMPP
-
-Start:
-
-- Apache
-- MySQL
-
-
-### 4. Import Database
-
-Open phpMyAdmin:
+Start XAMPP:
 
 ```
-http://localhost/phpmyadmin
+Apache
+MySQL
 ```
 
 Create database:
@@ -238,10 +328,7 @@ Create database:
 smart_online_shop
 ```
 
-Import the provided SQL file.
-
-
-### 5. Run Application
+Import database SQL file.
 
 Open:
 
@@ -249,68 +336,107 @@ Open:
 http://localhost/smart-online-shopping
 ```
 
-
 ---
 
-# Docker Deployment
+# Docker Implementation
 
-The application is containerized using Docker.
+The project is containerized using Docker.
 
-## Docker Image Creation
+## Docker Components
 
-Build Docker image:
+### Web Container
+
+Contains:
+
+* PHP 8.2
+* Apache Server
+* Application files
+
+### Database Container
+
+Contains:
+
+* MySQL 8.0 Database
+
+## Docker Commands
+
+Build image:
 
 ```bash
-docker build -t smart-online-shopping .
+docker compose build
 ```
 
-
-## Run Using Docker Compose
+Run containers:
 
 ```bash
 docker compose up
 ```
 
-
-Application runs on:
+Application runs locally at:
 
 ```
 http://localhost:8080
 ```
 
+---
+
+# CI/CD Pipeline
+
+GitHub Actions is used for Continuous Integration.
+
+Whenever code is pushed to the main branch, the pipeline automatically:
+
+1. Downloads the project code.
+2. Installs PHP environment.
+3. Checks PHP files.
+4. Validates project code.
+
+Workflow file:
+
+```
+.github/workflows/ci.yml
+```
+
+Pipeline:
+
+```
+Code Push
+    |
+    |
+GitHub Actions
+    |
+    |
+PHP Validation
+    |
+    |
+Successful Build
+```
+
+Status:
+
+✅ Smart Online Shopping CI Successful
 
 ---
 
 # Cloud Deployment
 
-## Application Deployment
+The application is deployed using:
 
-The application is deployed on:
+## Hosting Platform
 
 Render Web Service
 
-Live URL:
+Website:
 
 ```
 https://smart-online-shopping-final.onrender.com
 ```
 
-
-## Database Deployment
-
-The production database is deployed using:
+## Production Database
 
 TiDB Cloud
 
-
-Database:
-
-```
-smart_online_shop
-```
-
-
-Connection is configured using environment variables:
+Database connection uses environment variables:
 
 ```
 DB_HOST
@@ -320,83 +446,82 @@ DB_PASSWORD
 DB_NAME
 ```
 
-
-The PHP application connects securely using SSL/TLS.
-
+The application connects securely using SSL/TLS.
 
 ---
 
-# Version Control
+# Security Implementation
 
-The project uses Git and GitHub for source code management.
+Implemented security features:
 
-Repository:
-
-```
-https://github.com/Rhiannonsurfstore/smart-online-shopping-final
-```
-
-
-Git workflow used:
-
-```bash
-git add .
-git commit -m "Update project"
-git push
-```
-
-
----
-
-# Security Considerations
-
-Implemented security practices:
-
-- Password hashing using PHP password hashing functions
-- Protected database credentials using environment variables
-- Secure database connection using SSL
-- Input validation
-- Prepared SQL queries to reduce SQL injection risks
-
+* Password hashing
+* Prepared SQL statements
+* Input validation
+* Protected database credentials
+* Secure database connection
+* User authentication system
 
 ---
 
 # Testing
 
-The following tests were performed:
+The following tests were completed:
 
-✅ User registration test
+✅ User registration
 
-✅ Login authentication test
+✅ Login authentication
 
-✅ Product display test
+✅ Product display
 
-✅ Shopping cart test
+✅ Product search
 
-✅ Checkout test
+✅ Shopping cart
 
-✅ Order creation test
+✅ Checkout process
 
-✅ Admin dashboard test
+✅ Order creation
 
-✅ Cloud deployment test
+✅ Database connection
 
-✅ Database connection test
+✅ Cloud deployment
 
+✅ Docker deployment
+
+✅ CI/CD workflow
+
+---
+
+# Project Report
+
+A detailed project report is available here:
+
+[Open Project Report](PROJECT_REPORT.md)
+
+The report contains:
+
+* Introduction
+* Problem statement
+* Objectives
+* Architecture
+* Database design
+* Deployment
+* CI/CD implementation
+* Docker implementation
+* Challenges
+* Future improvements
 
 ---
 
 # Future Improvements
 
-Possible improvements:
+Possible future features:
 
-- Online payment integration
-- Product recommendation system
-- Mobile application version
-- Email notifications
-- Advanced analytics dashboard
-- AI-powered shopping assistant
-
+* Mobile Money payment integration
+* AI product recommendations
+* Email notifications
+* Mobile application
+* Advanced analytics dashboard
+* Real-time order tracking
 
 ---
 
@@ -410,17 +535,17 @@ E-Commerce and Web Application Project
 
 Academic Year: 2025/2026
 
-
 ---
 
 # Acknowledgement
 
 This project was developed as part of the E-Commerce and Web Application course.
 
-The project demonstrates practical skills in:
+It demonstrates practical skills in:
 
-- Web development
-- Database management
-- Docker containerization
-- Cloud deployment
-- Version control using GitHub
+* Full-stack web development
+* Database management
+* Cloud deployment
+* Docker containerization
+* GitHub version control
+* CI/CD automation
