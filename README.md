@@ -8,41 +8,65 @@
 
 ---
 
+# Table of Contents
+
+* [Live Application](#live-application)
+* [Project Overview](#project-overview)
+* [Objectives](#objectives)
+* [System Features](#system-features)
+* [Technologies Used](#technologies-used)
+* [System Architecture](#system-architecture)
+* [Database Design](#database-design)
+* [Project Structure](#project-structure)
+* [Application Screenshots](#application-screenshots)
+* [Local Installation](#local-installation)
+* [Docker Implementation](#docker-implementation)
+* [CI/CD Pipeline](#cicd-pipeline)
+* [Cloud Deployment](#cloud-deployment)
+* [Security Implementation](#security-implementation)
+* [Testing](#testing)
+* [Future Improvements](#future-improvements)
+* [Author](#author)
+* [Acknowledgement](#acknowledgement)
+
+---
+
 # Live Application
 
-🌐 **Website URL**
+## Website URL
 
-https://smart-online-shopping-final.onrender.com
+🌐 https://smart-online-shopping-final.onrender.com
 
 ---
 
 # Project Overview
 
-Smart Online Shopping System is a full-stack e-commerce web application developed to provide customers with a simple, secure, and convenient way to purchase products online.
+Smart Online Shopping System is a full-stack e-commerce web application developed to provide customers with a simple, secure, and convenient platform for purchasing products online.
 
-The system allows customers to register, login, browse products, search products, add items to a shopping cart, complete checkout, and manage their orders.
+The system allows users to create accounts, authenticate themselves, browse products, search products, add items to a shopping cart, complete checkout, and manage their orders.
 
-The project demonstrates practical implementation of:
+This project demonstrates practical skills in:
 
-* Web application development
+* Full-stack web development
 * Database management
 * Cloud deployment
 * Docker containerization
-* Continuous Integration using GitHub Actions
+* GitHub version control
+* Continuous Integration and Continuous Deployment (CI/CD)
 
 ---
 
-# Project Objectives
+# Objectives
 
-The objectives of this project are:
+The main objectives of this project are:
 
 * To develop an online shopping platform.
 * To provide customers with easy access to products.
-* To implement user authentication.
-* To manage products and orders efficiently.
-* To store information using a relational database.
+* To implement secure user authentication.
+* To manage products, customers, and orders efficiently.
+* To store application data using a relational database.
 * To deploy the application on a cloud platform.
-* To apply DevOps practices using Docker and CI/CD.
+* To apply DevOps practices using Docker and GitHub Actions.
 
 ---
 
@@ -54,7 +78,7 @@ Customers can:
 
 * Create an account
 * Login and logout
-* Browse products
+* Browse available products
 * Search products
 * Filter products by category
 * View product details
@@ -68,8 +92,7 @@ Customers can:
 
 Administrators can:
 
-* Login to admin dashboard
-* Manage products
+* Access admin dashboard
 * Add products
 * Update products
 * Delete products
@@ -137,31 +160,31 @@ PHP Backend
 Database Server
 ```
 
-Deployment architecture:
+## Deployment Architecture
 
 ```
 Developer
-    |
-    |
+     |
+     |
 GitHub Repository
-    |
-    |
+     |
+     |
 GitHub Actions CI
-    |
-    |
-Render Deployment
-    |
-    |
-Live Website
+     |
+     |
+Render Cloud Platform
+     |
+     |
+Live Application
 ```
 
-Docker architecture:
+## Docker Architecture
 
 ```
 PHP Apache Container
           |
           |
-MySQL Database Container
+Database Container
 ```
 
 ---
@@ -174,7 +197,7 @@ Database Name:
 smart_online_shop
 ```
 
-Main tables:
+## Main Tables
 
 | Table       | Description                                   |
 | ----------- | --------------------------------------------- |
@@ -185,7 +208,7 @@ Main tables:
 | order_items | Stores products inside orders                 |
 | reviews     | Stores customer reviews                       |
 
-Database relationships:
+## Relationships
 
 * One category contains many products.
 * One user can create many orders.
@@ -213,6 +236,8 @@ smart-online-shopping/
 │
 ├── admin/
 │
+├── screenshots/
+│
 ├── index.php
 ├── login.php
 ├── register.php
@@ -233,7 +258,7 @@ smart-online-shopping/
 
 ## Homepage
 
-The homepage contains:
+The homepage displays:
 
 * Website banner
 * Product categories
@@ -241,52 +266,86 @@ The homepage contains:
 
 ![Homepage](screenshots/homepage.png)
 
+---
+
 ## Products Page
 
 Features:
 
 * Product browsing
-* Product search
+* Search functionality
 * Category filtering
 
 ![Products](screenshots/products.png)
+
+---
 
 ## Product Details
 
 Displays:
 
 * Product information
-* Price
+* Product price
 * Description
 * Add to cart option
 
 ![Product Details](screenshots/product-details.png)
+
+---
 
 ## Shopping Cart
 
 Customers can:
 
 * View selected products
-* Manage cart items
-* View total price
+* Update quantities
+* Check total price
 
 ![Cart](screenshots/cart.png)
 
+---
+
 ## Checkout
 
-Customers can complete orders.
+Customers can complete their orders.
 
 ![Checkout](screenshots/checkout.png)
 
+---
+
 ## Login System
 
-The system provides:
+The authentication system provides:
 
-* Registration
-* Authentication
-* Secure login
+* User registration
+* Login functionality
+* Secure access control
 
 ![Login](screenshots/login.png)
+
+---
+
+## Localhost Deployment
+
+The application running successfully on the local development server.
+
+![Localhost](screenshots/localhost.png)
+
+---
+
+## Docker Deployment
+
+The project was containerized using Docker.
+
+![Docker](screenshots/docker.png)
+
+---
+
+## GitHub Actions CI/CD
+
+The CI/CD pipeline automatically validates the project after code changes.
+
+![GitHub Actions](screenshots/github-actions.png)
 
 ---
 
@@ -301,7 +360,7 @@ Install:
 * MySQL
 * Web Browser
 
-## Steps
+## Installation Steps
 
 Clone repository:
 
@@ -309,13 +368,13 @@ Clone repository:
 git clone https://github.com/Rhiannonsurfstore/smart-online-shopping-final.git
 ```
 
-Move project into:
+Move project to:
 
 ```
 C:\xampp\htdocs\
 ```
 
-Start XAMPP:
+Start XAMPP services:
 
 ```
 Apache
@@ -328,7 +387,7 @@ Create database:
 smart_online_shop
 ```
 
-Import database SQL file.
+Import the SQL database file.
 
 Open:
 
@@ -340,7 +399,7 @@ http://localhost/smart-online-shopping
 
 # Docker Implementation
 
-The project is containerized using Docker.
+The application is containerized using Docker.
 
 ## Docker Components
 
@@ -356,23 +415,23 @@ Contains:
 
 Contains:
 
-* MySQL 8.0 Database
+* MySQL Database
 
 ## Docker Commands
 
-Build image:
+Build container:
 
 ```bash
 docker compose build
 ```
 
-Run containers:
+Run application:
 
 ```bash
 docker compose up
 ```
 
-Application runs locally at:
+Application URL:
 
 ```
 http://localhost:8080
@@ -384,12 +443,12 @@ http://localhost:8080
 
 GitHub Actions is used for Continuous Integration.
 
-Whenever code is pushed to the main branch, the pipeline automatically:
+The pipeline performs:
 
-1. Downloads the project code.
-2. Installs PHP environment.
-3. Checks PHP files.
-4. Validates project code.
+1. Download project source code.
+2. Setup PHP environment.
+3. Validate PHP files.
+4. Check project build.
 
 Workflow file:
 
@@ -401,14 +460,14 @@ Pipeline:
 
 ```
 Code Push
-    |
-    |
+     |
+     |
 GitHub Actions
-    |
-    |
+     |
+     |
 PHP Validation
-    |
-    |
+     |
+     |
 Successful Build
 ```
 
@@ -446,7 +505,7 @@ DB_PASSWORD
 DB_NAME
 ```
 
-The application connects securely using SSL/TLS.
+The database connection is secured using SSL/TLS.
 
 ---
 
@@ -459,7 +518,7 @@ Implemented security features:
 * Input validation
 * Protected database credentials
 * Secure database connection
-* User authentication system
+* User authentication
 
 ---
 
@@ -483,9 +542,9 @@ The following tests were completed:
 
 ✅ Database connection
 
-✅ Cloud deployment
-
 ✅ Docker deployment
+
+✅ Cloud deployment
 
 ✅ CI/CD workflow
 
@@ -493,20 +552,22 @@ The following tests were completed:
 
 # Project Report
 
-A detailed project report is available here:
+A detailed project report is available:
 
-[Open Project Report](PROJECT_REPORT.md)
+```
+PROJECT_REPORT.md
+```
 
-The report contains:
+The report includes:
 
 * Introduction
 * Problem statement
 * Objectives
-* Architecture
+* System architecture
 * Database design
-* Deployment
-* CI/CD implementation
+* Deployment process
 * Docker implementation
+* CI/CD implementation
 * Challenges
 * Future improvements
 
@@ -514,12 +575,12 @@ The report contains:
 
 # Future Improvements
 
-Possible future features:
+Possible future enhancements:
 
 * Mobile Money payment integration
 * AI product recommendations
 * Email notifications
-* Mobile application
+* Mobile application development
 * Advanced analytics dashboard
 * Real-time order tracking
 
@@ -541,7 +602,7 @@ Academic Year: 2025/2026
 
 This project was developed as part of the E-Commerce and Web Application course.
 
-It demonstrates practical skills in:
+It demonstrates practical knowledge in:
 
 * Full-stack web development
 * Database management
