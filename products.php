@@ -33,7 +33,7 @@ if(isset($_GET['category'])){
 
      WHERE products.category_id = ?
 
-     GROUP BY products.product_id"
+     GROUP BY products.product_id, categories.category_name"
 
     );
 
@@ -60,10 +60,14 @@ elseif(isset($_GET['search']) && !empty($_GET['search'])){
 
 
     "SELECT products.*,
+            categories.category_name,
             AVG(reviews.rating) AS average_rating,
             COUNT(reviews.review_id) AS total_reviews
 
      FROM products
+
+     JOIN categories
+     ON products.category_id = categories.category_id
 
      LEFT JOIN reviews
      ON products.product_id = reviews.product_id
@@ -71,7 +75,7 @@ elseif(isset($_GET['search']) && !empty($_GET['search'])){
      WHERE products.product_name LIKE ?
      OR products.description LIKE ?
 
-     GROUP BY products.product_id"
+     GROUP BY products.product_id, categories.category_name"
 
     );
 
@@ -96,19 +100,22 @@ else{
     $query =
 
     "SELECT products.*,
+            categories.category_name,
             AVG(reviews.rating) AS average_rating,
             COUNT(reviews.review_id) AS total_reviews
 
      FROM products
 
+     JOIN categories
+     ON products.category_id = categories.category_id
+
      LEFT JOIN reviews
      ON products.product_id = reviews.product_id
 
-     GROUP BY products.product_id";
+     GROUP BY products.product_id, categories.category_name";
 
 
     $result = mysqli_query($conn,$query);
-
 
 
 }
