@@ -1,3 +1,10 @@
+<?php
+// Start session only if it has not been started yet
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
 
 <div class="container">
@@ -44,25 +51,20 @@ data-bs-target="#navbarMenu">
 </li>
 
 
-
-<?php if(isset($_SESSION['user_id'])) { ?>
-
+<?php if (isset($_SESSION['user_id'])) { ?>
 
 <li class="nav-item">
 <span class="nav-link">
 
 <i class="fas fa-user-circle me-1"></i>
 
-<?php 
-echo htmlspecialchars($_SESSION['full_name']); 
-?>
+<?php echo htmlspecialchars($_SESSION['full_name']); ?>
 
 </span>
 </li>
 
 
 <li class="nav-item">
-
 <a class="btn btn-danger ms-3" href="logout.php">
 
 <i class="fas fa-sign-out-alt"></i>
@@ -70,16 +72,13 @@ echo htmlspecialchars($_SESSION['full_name']);
 Logout
 
 </a>
-
 </li>
-
 
 
 <?php } else { ?>
 
 
 <li class="nav-item">
-
 <a class="btn btn-info ms-3" href="register.php">
 
 <i class="fas fa-user-plus"></i>
@@ -87,13 +86,10 @@ Logout
 Register
 
 </a>
-
 </li>
 
 
-
 <li class="nav-item">
-
 <a class="btn btn-success ms-2" href="login.php">
 
 <i class="fas fa-sign-in-alt"></i>
@@ -101,7 +97,6 @@ Register
 Login
 
 </a>
-
 </li>
 
 
