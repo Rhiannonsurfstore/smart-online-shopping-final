@@ -1,25 +1,21 @@
 <?php
 
-// Get database settings from environment variables
-$host = getenv("DB_HOST") ?: "localhost";
-$username = getenv("DB_USER") ?: "root";
-$password = getenv("DB_PASSWORD") ?: "";
-$database = getenv("DB_NAME") ?: "smart_online_shop";
-$port = getenv("DB_PORT") ?: 3306;
+$host = getenv("DB_HOST");
+$username = getenv("DB_USER");
+$password = getenv("DB_PASSWORD");
+$database = getenv("DB_NAME");
+$port = getenv("DB_PORT");
 
 $conn = mysqli_init();
 
 if (!$conn) {
-    die("MySQL initialization failed");
+    die("MySQL initialization failed.");
 }
 
-/*
- Check if running with TiDB Cloud SSL
- or normal local MySQL/Docker
-*/
+// Enable SSL only when connecting to TiDB Cloud
+$flags = 0;
 
-if (getenv("DB_SSL") === "true") {
-
+if ($port == 4000) {
     mysqli_ssl_set(
         $conn,
         NULL,
@@ -29,39 +25,24 @@ if (getenv("DB_SSL") === "true") {
         NULL
     );
 
-    $ssl = MYSQLI_CLIENT_SSL;
-
-} else {
-
-    $ssl = 0;
+    $flags = MYSQLI_CLIENT_SSL;
 }
 
-
-// Connect to database
 mysqli_real_connect(
     $conn,
     $host,
     $username,
     $password,
     $database,
-    $port,
+    (int)$port,
     NULL,
-    $ssl
+    $flags
 );
 
-
-// Check connection
 if (mysqli_connect_errno()) {
-
-    die(
-        "Database connection failed: " .
-        mysqli_connect_error()
-    );
-
+    die("Database connection failed: " . mysqli_connect_error());
 }
 
-
-// Set character encoding
 mysqli_set_charset($conn, "utf8mb4");
 
 ?>
