@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include "config/database.php";
 include "includes/header.php";
 include "includes/Navbar.php";
@@ -112,8 +114,8 @@ else{
 }
 
 
-?>
 
+?>
 
 
 <div class="container mt-4">
@@ -121,14 +123,17 @@ else{
 
 <h2 class="text-center mb-4">
 
-🛍 Our Products
+<i class="fas fa-shopping-bag text-primary"></i>
+
+Our Products
 
 </h2>
 
 
 
 
-<!-- ================= SEARCH BAR ================= -->
+
+<!-- SEARCH BAR -->
 
 
 <div class="row justify-content-center mb-4">
@@ -160,7 +165,9 @@ value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '
 
 <button class="btn btn-dark">
 
-🔍 Search
+<i class="fas fa-search"></i>
+
+Search
 
 </button>
 
@@ -180,8 +187,7 @@ value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '
 
 
 
-
-<!-- ================= CATEGORIES ================= -->
+<!-- CATEGORIES -->
 
 
 <div class="text-center mb-5">
@@ -189,6 +195,8 @@ value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '
 
 <a href="products.php"
 class="btn btn-dark m-1">
+
+<i class="fas fa-th"></i>
 
 All
 
@@ -199,7 +207,9 @@ All
 <a href="products.php?category=1"
 class="btn btn-primary m-1">
 
-👗 Fashion
+<i class="fas fa-shirt"></i>
+
+Fashion
 
 </a>
 
@@ -208,7 +218,9 @@ class="btn btn-primary m-1">
 <a href="products.php?category=3"
 class="btn btn-success m-1">
 
-🧴 Beauty
+<i class="fas fa-spa"></i>
+
+Beauty
 
 </a>
 
@@ -217,7 +229,9 @@ class="btn btn-success m-1">
 <a href="products.php?category=4"
 class="btn btn-warning m-1">
 
-👜 Bags
+<i class="fas fa-bag-shopping"></i>
+
+Bags
 
 </a>
 
@@ -226,13 +240,14 @@ class="btn btn-warning m-1">
 <a href="products.php?category=2"
 class="btn btn-danger m-1">
 
-👟 Shoes
+<i class="fas fa-shoe-prints"></i>
+
+Shoes
 
 </a>
 
 
 </div>
-
 
 
 
@@ -305,7 +320,6 @@ alt="<?php echo htmlspecialchars($product['product_name']); ?>"
 
 
 
-
 <div class="card-body text-center">
 
 
@@ -323,6 +337,7 @@ alt="<?php echo htmlspecialchars($product['product_name']); ?>"
 
 
 
+
 <!-- Rating -->
 
 
@@ -334,7 +349,13 @@ alt="<?php echo htmlspecialchars($product['product_name']); ?>"
 
 <?php
 
-echo str_repeat("⭐", round($product['average_rating']));
+$stars = round($product['average_rating']);
+
+for($i = 1; $i <= $stars; $i++){
+
+    echo '<i class="fas fa-star"></i>';
+
+}
 
 ?>
 
@@ -405,9 +426,12 @@ No reviews yet
 
 class="btn btn-primary w-100">
 
+<i class="fas fa-eye"></i>
+
 View Details
 
 </a>
+
 
 
 
