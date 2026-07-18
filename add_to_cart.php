@@ -14,10 +14,10 @@ if(isset($_GET['id'])){
     $query = "SELECT * FROM products WHERE product_id = ?";
 
 
-    $stmt = mysqli_prepare($conn,$query);
+    $stmt = mysqli_prepare($conn, $query);
 
 
-    mysqli_stmt_bind_param($stmt,"i",$product_id);
+    mysqli_stmt_bind_param($stmt, "i", $product_id);
 
 
     mysqli_stmt_execute($stmt);
