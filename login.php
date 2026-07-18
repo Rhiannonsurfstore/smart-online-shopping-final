@@ -6,112 +6,198 @@ include "config/database.php";
 
 $message = "";
 
+
 if(isset($_POST['login'])){
 
-    $email = $_POST['email'];
+
+    $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    // Secure query using prepared statement
-    $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE email=?");
 
-    mysqli_stmt_bind_param($stmt, "s", $email);
+
+    // Secure query
+    $stmt = mysqli_prepare($conn, 
+        "SELECT * FROM users WHERE email=?"
+    );
+
+
+    mysqli_stmt_bind_param(
+        $stmt,
+        "s",
+        $email
+    );
+
 
     mysqli_stmt_execute($stmt);
 
+
     $result = mysqli_stmt_get_result($stmt);
+
 
     $user = mysqli_fetch_assoc($result);
 
+
+
     if($user && password_verify($password, $user['password'])){
 
+
         $_SESSION['user_id'] = $user['user_id'];
+
         $_SESSION['full_name'] = $user['full_name'];
+
         $_SESSION['role'] = $user['role'];
 
+
+
         header("Location: index.php");
-        exit;
+
+        exit();
+
+
 
     }else{
 
+
         $message = "Invalid email or password";
+
 
     }
 
+
 }
 
+
+
 include "includes/header.php";
+
 include "includes/Navbar.php";
+
 
 ?>
 
+
 <div class="container mt-5">
 
-    <div class="row justify-content-center">
 
-        <div class="col-md-5">
+<div class="row justify-content-center">
 
-            <div class="card shadow p-4">
 
-                <h2 class="text-center mb-4">
-                    🔐 Login
-                </h2>
+<div class="col-md-5">
 
-                <?php if($message != ""){ ?>
 
-                    <div class="alert alert-danger">
+<div class="card shadow p-4">
 
-                        <?php echo $message; ?>
 
-                    </div>
+<h2 class="text-center mb-4">
 
-                <?php } ?>
+🔐 Login
 
-                <form method="POST">
+</h2>
 
-                    <div class="mb-3">
 
-                        <label class="form-label">
-                            Email
-                        </label>
 
-                        <input
-                            type="email"
-                            name="email"
-                            class="form-control"
-                            required>
+<?php if($message != "") { ?>
 
-                    </div>
 
-                    <div class="mb-3">
+<div class="alert alert-danger">
 
-                        <label class="form-label">
-                            Password
-                        </label>
-
-                        <input
-                            type="password"
-                            name="password"
-                            class="form-control"
-                            required>
-
-                    </div>
-
-                    <button
-                        class="btn btn-success w-100"
-                        name="login">
-
-                        Login
-
-                    </button>
-
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
+<?php echo htmlspecialchars($message); ?>
 
 </div>
+
+
+<?php } ?>
+
+
+
+<form method="POST">
+
+
+
+<div class="mb-3">
+
+
+<label class="form-label">
+
+Email
+
+</label>
+
+
+<input
+
+type="email"
+
+name="email"
+
+class="form-control"
+
+required>
+
+
+</div>
+
+
+
+
+
+<div class="mb-3">
+
+
+<label class="form-label">
+
+Password
+
+</label>
+
+
+<input
+
+type="password"
+
+name="password"
+
+class="form-control"
+
+required>
+
+
+</div>
+
+
+
+
+<button
+
+type="submit"
+
+class="btn btn-success w-100"
+
+name="login">
+
+
+Login
+
+
+</button>
+
+
+
+</form>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
 
 <?php include "includes/footer.php"; ?>
