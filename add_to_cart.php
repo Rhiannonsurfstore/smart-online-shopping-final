@@ -7,7 +7,6 @@ include "config/database.php";
 
 if(isset($_GET['id'])){
 
-
     $product_id = intval($_GET['id']);
 
 
@@ -24,9 +23,7 @@ if(isset($_GET['id'])){
     $product = mysqli_fetch_assoc($result);
 
 
-
     if($product){
-
 
         if(!isset($_SESSION['cart'])){
 
@@ -35,32 +32,33 @@ if(isset($_GET['id'])){
         }
 
 
+        // If product already exists, increase quantity
+        if(isset($_SESSION['cart'][$product_id])){
 
-        $_SESSION['cart'][$product_id] = [
+            $_SESSION['cart'][$product_id]['quantity']++;
 
-            "name" => $product['product_name'],
-
-            "price" => $product['price'],
-
-            "quantity" => 1
-
-        ];
+        } else {
 
 
+            $_SESSION['cart'][$product_id] = [
+
+                "name" => $product['product_name'],
+
+                "price" => $product['price'],
+
+                "quantity" => 1
+
+            ];
+
+        }
 
     }
-
 
 }
 
 
-
-echo "<pre>";
-
-print_r($_SESSION);
-
-echo "</pre>";
-
-exit;
+// Redirect to cart page
+header("Location: cart.php");
+exit();
 
 ?>
